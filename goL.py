@@ -9,10 +9,10 @@ def buildBoard():
     
 
 def redrawAll():
-     for r in range(0,10):
-        for c in range (0,10):
-            Sprite(buildBoard[r][c])
-        
+    for i in range(30): #a row of dots!
+        for j in range(20):
+            Sprite(deadSquare,(10+(10+10)*i,10+(10+10)*j))
+
     
 
 if __name__ == '__main__': # setup and runs game, just put all the def functions before
@@ -22,7 +22,8 @@ if __name__ == '__main__': # setup and runs game, just put all the def functions
     white = Color(0xFFFFFF,1) #white
     black = Color(0x000000,1) #Black
     
-    deadSquare = RectangleAsset(30,30, LineStyle(1,white),black)
     buildBoard()
+    deadSquare = RectangleAsset(30,30, LineStyle(1,white),black)
+    liveSquare = RectangleAsset(30,30, LineStyle(1,white),green)
     redrawAll()
     App().run()
