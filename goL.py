@@ -9,8 +9,8 @@ def buildBoard():
     
 
 def redrawAll():
-    for i in range(30): #a row of dots!
-        for j in range(20):
+    for i in range(10): #a row of dots!
+        for j in range(10):
             Sprite(deadSquare,(10+(10+10)*i,10+(10+10)*j))
 
     
