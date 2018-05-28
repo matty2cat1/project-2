@@ -17,7 +17,10 @@ def redrawAll():
 
 if __name__ == '__main__': # setup and runs game, just put all the def functions before
 
- data = {}
+#Holds variables in a dictionary
+    data = {}
+    
+
 
 #colors for the color god
     green = Color(0x00FF00,1) #Green
