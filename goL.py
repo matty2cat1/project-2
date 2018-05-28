@@ -4,18 +4,20 @@
 
 from ggame import *
 
-def buildBoard():
-    [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]]
-    
+def buildBoard(): #the blank board
+    board = [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]]
+    return(board)
 
 def redrawAll():
-    for i in range(10): #a row of dots!
-        for j in range(10):
-            Sprite(deadSquare,(10+(10+10)*i,10+(10+10)*j))
+    for i in range(10): #a row of boxes!
+        for j in range(10): #Columns of boxes!
+            Sprite(deadSquare,(10+(10+10)*i,10+(10+10)*j)) #The grid, ripped straight from the dot grid program
 
     
 
 if __name__ == '__main__': # setup and runs game, just put all the def functions before
+
+ data = {}
 
 #colors for the color god
     green = Color(0x00FF00,1) #Green
