@@ -9,19 +9,15 @@ def buildBoard(): #the blank board
     return(board)
 
 def redrawAll():
+    for item in App().spritelist[:]:
+        item.destroy()
     for i in range(10): #a row of boxes!
         for j in range(10): #Columns of boxes!
             if data["board"][i][j]==0:
                 Sprite(deadSquare,((30)*i,(30)*j))
             else:
                 Sprite(liveSquare,((30)*i,(30)*j))
-                
-            """
-            #need to destroy the previous board
-            for item in board:
-                if item == 1:
-                    Sprite(liveSquare)
-            """
+
             
 def mouseClick(event):
     xBox = event.x//30
@@ -47,8 +43,8 @@ if __name__ == '__main__': # setup and runs game, just put all the def functions
     black = Color(0x000000,1) #Black
     
     
-    deadSquare = RectangleAsset(30,30, LineStyle(1,black),white)
-    liveSquare = RectangleAsset(30,30, LineStyle(1,white),black)
+    deadSquare = RectangleAsset(30,30, LineStyle(1,white),black)
+    liveSquare = RectangleAsset(30,30, LineStyle(1,black),green)
     redrawAll()
     App().listenMouseEvent('click', mouseClick) 
     App().run()
