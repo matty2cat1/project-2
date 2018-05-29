@@ -11,16 +11,26 @@ def buildBoard(): #the blank board
 def redrawAll():
     for i in range(10): #a row of boxes!
         for j in range(10): #Columns of boxes!
-            Sprite(deadSquare,((30)*i,(30)*j)) #The grid, ripped straight from the dot grid program
+            if data["board"][i][j]==0:
+                Sprite(deadSquare,((30)*i,(30)*j))
+            else:
+                Sprite(liveSquare,((30)*i,(30)*j))
+                
+            """
+            #need to destroy the previous board
+            for item in board:
+                if item == 1:
+                    Sprite(liveSquare)
+            """
             
 def mouseClick(event):
-    xBox = round(event.x-5,1)
-    yBox = round(event.y-5,1)
-    if board[xBox[yBox]] == 0:
+    xBox = event.x//30
+    yBox = event.y//30
+    if data["board"][xBox][yBox] == 0:
         data["board"][xBox][yBox] = 1
     else:
         data["board"][xBox][yBox] = 0
-
+    redrawAll()
 
     
 
