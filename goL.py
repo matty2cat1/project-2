@@ -29,7 +29,6 @@ def mouseClick(event):
     redrawAll()
 
 def numNeighbors(r,c):
-    board[r][c]
     if board[r-1][c-1]==1:
         numNeighbors+=1
     if board[r-1][c]==1:
@@ -47,7 +46,11 @@ def numNeighbors(r,c):
     if board[r+1][c+1]==1:
         numNeighbors+=1
     return(numNeighbors) 
-        
+
+def nextGen:
+    for l in board:
+        for s in l:
+            nu
 
 if __name__ == '__main__': # setup and runs game, just put all the def functions before
 
