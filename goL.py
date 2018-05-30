@@ -28,7 +28,26 @@ def mouseClick(event):
         data["board"][xBox][yBox] = 0
     redrawAll()
 
-    
+def numNeighbors(r,c):
+    board[r][c]
+    if board[r-1][c-1]==1:
+        numNeighbors+=1
+    if board[r-1][c]==1:
+        numNeighbors+=1
+    if board[r-1][c+1]==1:
+        numNeighbors+=1
+    if board[r][c-1]==1:
+        numNeighbors+=1
+    if board[r][c+1]==1:
+        numNeighbors+=1
+    if board[r+1][c-1]==1:
+        numNeighbors+=1
+    if board[r+1][c]==1:
+        numNeighbors+=1
+    if board[r+1][c+1]==1:
+        numNeighbors+=1
+    return(numNeighbors) 
+        
 
 if __name__ == '__main__': # setup and runs game, just put all the def functions before
 
