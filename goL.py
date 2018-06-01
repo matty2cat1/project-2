@@ -53,13 +53,15 @@ def nextGen(): #Moves to the next generation, killing and reviving whichever cel
             numNeighbors(r,c)
             if c == 0:
                 if numNeighbors == 3:
-                    c == 1
+                    c = 1
             if c == 1:
                 if numNeighbors < 2 or numNeighbors > 3:
-                    c == 0
+                    c = 0
+    redrawAll()
+    
 def step(): #autonextgens after 150 frames
     data['frames'] +=1
-    if data['frames']%150 == 0:
+    if data['frames']%150 == 1:
         nextGen()
                 
 
@@ -68,7 +70,7 @@ if __name__ == '__main__': # setup and runs game, just put all the def functions
 #Holds variables in a dictionary
     data = {}
     data["board"] = buildBoard()
-    data['frames'] = 0
+    data['frames'] = 1
 
 
 #colors for the color god
