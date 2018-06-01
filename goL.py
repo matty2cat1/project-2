@@ -55,8 +55,8 @@ def nextGen(): #Moves to the next generation, killing and reviving whichever cel
                 if numNeighbors == 3:
                     c == 1
             if c == 1:
-                if numNeighbors < 2 or numNeighbors > 3
-                c == 0
+                if numNeighbors < 2 or numNeighbors > 3:
+                    c == 0
 def step():
     data['frames'] +=1
     if data['frames']%150 == 0:
