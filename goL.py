@@ -47,7 +47,7 @@ def numNeighbors(r,c): #Determines how many neighbors a cell has
         numNeighbors+=1
     return(numNeighbors) 
 
-def nextGen: #Moves to the next generation, killing and reviving whichever cells fit the requirements. Brutal.
+def nextGen(): #Moves to the next generation, killing and reviving whichever cells fit the requirements. Brutal.
     for r in board:
         for c in r:
             numNeighbors(r,c)
@@ -57,6 +57,10 @@ def nextGen: #Moves to the next generation, killing and reviving whichever cells
             if c == 1:
                 if numNeighbors < 2 or numNeighbors > 3
                 c == 0
+def step():
+    data['frames'] +=1
+    if data['frames']%150 == 0:
+        nextGen()
                 
 
 if __name__ == '__main__': # setup and runs game, just put all the def functions before
@@ -76,4 +80,4 @@ if __name__ == '__main__': # setup and runs game, just put all the def functions
     liveSquare = RectangleAsset(30,30, LineStyle(1,black),green)
     redrawAll()
     App().listenMouseEvent('click', mouseClick) 
-    App().run()
+    App().run(step)
