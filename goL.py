@@ -4,11 +4,11 @@
 
 from ggame import *
 
-def buildBoard(): #the blank board
+def buildBoard(): #the blank matrix, will be edited when you click
     board = [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]]
     return(board)
 
-def redrawAll():
+def redrawAll(): #makes the board, sprites both dead and live ones
     for item in App().spritelist[:]:
         item.destroy()
     for i in range(10): #a row of boxes!
@@ -19,7 +19,7 @@ def redrawAll():
                 Sprite(liveSquare,((30)*i,(30)*j))
 
             
-def mouseClick(event):
+def mouseClick(event): #makes the mouse click function
     xBox = event.x//30
     yBox = event.y//30
     if data["board"][xBox][yBox] == 0:
@@ -28,7 +28,7 @@ def mouseClick(event):
         data["board"][xBox][yBox] = 0
     redrawAll()
 
-def numNeighbors(r,c):
+def numNeighbors(r,c): #Determines how many neighbors a cell has
     if board[r-1][c-1]==1:
         numNeighbors+=1
     if board[r-1][c]==1:
@@ -47,10 +47,17 @@ def numNeighbors(r,c):
         numNeighbors+=1
     return(numNeighbors) 
 
-def nextGen:
-    for l in board:
-        for s in l:
-            nu
+def nextGen: #Moves to the next generation, killing and reviving whichever cells fit the requirements. Brutal.
+    for r in board:
+        for c in r:
+            numNeighbors(r,c)
+            if c == 0:
+                if numNeighbors == 3:
+                    c == 1
+            if c == 1:
+                if numNeighbors < 2 or numNeighbors > 3
+                c == 0
+                
 
 if __name__ == '__main__': # setup and runs game, just put all the def functions before
 
@@ -64,7 +71,7 @@ if __name__ == '__main__': # setup and runs game, just put all the def functions
     white = Color(0xFFFFFF,1) #white
     black = Color(0x000000,1) #Black
     
-    
+#Graphics for the graphic throne   
     deadSquare = RectangleAsset(30,30, LineStyle(1,white),black)
     liveSquare = RectangleAsset(30,30, LineStyle(1,black),green)
     redrawAll()
