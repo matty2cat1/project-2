@@ -20,23 +20,24 @@ def redrawAll(): #makes the board, sprites both dead and live ones
                 Sprite(liveSquare,((30)*i,(30)*j))
 
 def numNeighbors(r,c): #Determines how many neighbors a cell has
+    live = 0
     if r != 0 and c != 0 and data["board"][r-1][c-1]==1:
-        numNeighbors+=1
+        live +=1
     if r != 0 and data["board"][r-1][c]==1:
-        numNeighbors+=1
+        live +=1
     if r != 0 and c != 9 and data["board"][r-1][c+1]==1:
-        numNeighbors+=1
+        live +=1
     if c != 0 and data["board"][r][c-1]==1:
-        numNeighbors+=1
+        live +=1
     if c != 9 and data["board"][r][c+1]==1:
-        numNeighbors+=1
+        live +=1
     if r != 9 and c != 0 and data["board"][r+1][c-1]==1:
-        numNeighbors+=1
+        live +=1
     if r != 9 and data["board"][r+1][c]==1:
-        numNeighbors+=1
+        live +=1
     if r != 9 and c != 9 and data["board"][r+1][c+1]==1:
-        numNeighbors+=1
-    return(numNeighbors) 
+        live +=1
+    return(live) 
 
 def nextGen(): #Moves to the next generation, killing and reviving whichever cells fit the requirements. Brutal.
     new = buildBoard()
