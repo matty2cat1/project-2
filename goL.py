@@ -18,32 +18,22 @@ def redrawAll(): #makes the board, sprites both dead and live ones
             else:
                 Sprite(liveSquare,((30)*i,(30)*j))
 
-            
-def mouseClick(event): #makes the mouse click function
-    xBox = event.x//30
-    yBox = event.y//30
-    if data["board"][xBox][yBox] == 0:
-        data["board"][xBox][yBox] = 1
-    else:
-        data["board"][xBox][yBox] = 0
-    redrawAll()
-
 def numNeighbors(r,c): #Determines how many neighbors a cell has
-    if board[r-1][c-1]==1:
+    if r != 0 and c != 0 and board[r-1][c-1]==1:
         numNeighbors+=1
-    if board[r-1][c]==1:
+    if r != 0 and board[r-1][c]==1:
         numNeighbors+=1
-    if board[r-1][c+1]==1:
+    if r != 0 and c != 9 and board[r-1][c+1]==1:
         numNeighbors+=1
-    if board[r][c-1]==1:
+    if c != 0 and board[r][c-1]==1:
         numNeighbors+=1
-    if board[r][c+1]==1:
+    if c != 9 and board[r][c+1]==1:
         numNeighbors+=1
-    if board[r+1][c-1]==1:
+    if r != 9 and c != 0 and board[r+1][c-1]==1:
         numNeighbors+=1
-    if board[r+1][c]==1:
+    if r != 9 and board[r+1][c]==1:
         numNeighbors+=1
-    if board[r+1][c+1]==1:
+    if r != 9 and c != 9 and board[r+1][c+1]==1:
         numNeighbors+=1
     return(numNeighbors) 
 
@@ -58,6 +48,19 @@ def nextGen(): #Moves to the next generation, killing and reviving whichever cel
                 if num < 2 or num > 3:
                     c = 0
     redrawAll()
+
+            
+def mouseClick(event): #makes the mouse click function
+    xBox = event.x//30
+    yBox = event.y//30
+    if event.y >= 305:
+        nextGen()
+    else:
+        if data["board"][xBox][yBox] == 0:
+            data["board"][xBox][yBox] = 1
+        elif data["board"][xBox][yBox] == 1:
+            data["board"][xBox][yBox] = 0
+        redrawAll()
     
 
 if __name__ == '__main__': # setup and runs game, just put all the def functions before
@@ -65,7 +68,6 @@ if __name__ == '__main__': # setup and runs game, just put all the def functions
 #Holds variables in a dictionary
     data = {}
     data["board"] = buildBoard()
-    data['frames'] = 1
 
 
 #colors for the color god
@@ -76,6 +78,10 @@ if __name__ == '__main__': # setup and runs game, just put all the def functions
 #Graphics for the graphic throne   
     deadSquare = RectangleAsset(30,30, LineStyle(1,black),white)
     liveSquare = RectangleAsset(30,30, LineStyle(1,black),green)
+    text = TextAsset("Next Gen",fill=black, style='bold 40pt Times')
+    
+
     redrawAll()
+    Sprite(text,(400,400))
     App().listenMouseEvent('click', mouseClick) 
     App().run()
