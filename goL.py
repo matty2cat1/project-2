@@ -11,6 +11,7 @@ def buildBoard(): #the blank matrix, will be edited when you click
 def redrawAll(): #makes the board, sprites both dead and live ones
     for item in App().spritelist[:]:
         item.destroy()
+    Sprite(text,(0,300))
     for i in range(10): #a row of boxes!
         for j in range(10): #Columns of boxes!
             if data["board"][i][j]==0:
@@ -19,33 +20,33 @@ def redrawAll(): #makes the board, sprites both dead and live ones
                 Sprite(liveSquare,((30)*i,(30)*j))
 
 def numNeighbors(r,c): #Determines how many neighbors a cell has
-    if r != 0 and c != 0 and board[r-1][c-1]==1:
+    if r != 0 and c != 0 and data["board"][r-1][c-1]==1:
         numNeighbors+=1
-    if r != 0 and board[r-1][c]==1:
+    if r != 0 and data["board"][r-1][c]==1:
         numNeighbors+=1
-    if r != 0 and c != 9 and board[r-1][c+1]==1:
+    if r != 0 and c != 9 and data["board"][r-1][c+1]==1:
         numNeighbors+=1
-    if c != 0 and board[r][c-1]==1:
+    if c != 0 and data["board"][r][c-1]==1:
         numNeighbors+=1
-    if c != 9 and board[r][c+1]==1:
+    if c != 9 and data["board"][r][c+1]==1:
         numNeighbors+=1
-    if r != 9 and c != 0 and board[r+1][c-1]==1:
+    if r != 9 and c != 0 and data["board"][r+1][c-1]==1:
         numNeighbors+=1
-    if r != 9 and board[r+1][c]==1:
+    if r != 9 and data["board"][r+1][c]==1:
         numNeighbors+=1
-    if r != 9 and c != 9 and board[r+1][c+1]==1:
+    if r != 9 and c != 9 and data["board"][r+1][c+1]==1:
         numNeighbors+=1
     return(numNeighbors) 
 
 def nextGen(): #Moves to the next generation, killing and reviving whichever cells fit the requirements. Brutal.
-    for r in board:
-        for c in r:
+    for r in range(10): #a row of boxes!
+        for c in range(10): #Columns of boxes!
             num = numNeighbors(r,c)
             if c == 0:
                 if num == 3:
                     c = 1
             if c == 1:
-                if num < 2 or num > 3:
+                if num <= 1 or num >= 4:
                     c = 0
     redrawAll()
 
@@ -82,6 +83,6 @@ if __name__ == '__main__': # setup and runs game, just put all the def functions
     
 
     redrawAll()
-    Sprite(text,(400,400))
+    Sprite(text,(0,300))
     App().listenMouseEvent('click', mouseClick) 
     App().run()
