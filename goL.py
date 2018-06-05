@@ -39,22 +39,22 @@ def numNeighbors(r,c): #Determines how many neighbors a cell has
     return(numNeighbors) 
 
 def nextGen(): #Moves to the next generation, killing and reviving whichever cells fit the requirements. Brutal.
+    new = buildBoard()
     for r in range(10): #a row of boxes!
         for c in range(10): #Columns of boxes!
             num = numNeighbors(r,c)
-            if c == 0:
-                if num == 3:
-                    c = 1
-            if c == 1:
-                if num <= 1 or num >= 4:
-                    c = 0
+            if num == 3:
+                new[r][c]=1
+            if num <= 1 or num >= 4:
+                new[r][c]=0
+    data["board"] = new
     redrawAll()
 
             
 def mouseClick(event): #makes the mouse click function
     xBox = event.x//30
     yBox = event.y//30
-    if event.y >= 305:
+    if event.y >= 300:
         nextGen()
     else:
         if data["board"][xBox][yBox] == 0:
