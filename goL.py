@@ -50,20 +50,15 @@ def numNeighbors(r,c): #Determines how many neighbors a cell has
 def nextGen(): #Moves to the next generation, killing and reviving whichever cells fit the requirements. Brutal.
     for r in board:
         for c in r:
-            numNeighbors(r,c)
+            num = numNeighbors(r,c)
             if c == 0:
-                if numNeighbors == 3:
+                if num == 3:
                     c = 1
             if c == 1:
-                if numNeighbors < 2 or numNeighbors > 3:
+                if num < 2 or num > 3:
                     c = 0
     redrawAll()
     
-def step(): #autonextgens after 150 frames
-    data['frames'] +=1
-    if data['frames']%150 == 1:
-        nextGen()
-                
 
 if __name__ == '__main__': # setup and runs game, just put all the def functions before
 
@@ -79,8 +74,8 @@ if __name__ == '__main__': # setup and runs game, just put all the def functions
     black = Color(0x000000,1) #Black
     
 #Graphics for the graphic throne   
-    deadSquare = RectangleAsset(30,30, LineStyle(1,white),black)
+    deadSquare = RectangleAsset(30,30, LineStyle(1,black),white)
     liveSquare = RectangleAsset(30,30, LineStyle(1,black),green)
     redrawAll()
     App().listenMouseEvent('click', mouseClick) 
-    App().run(step)
+    App().run()
