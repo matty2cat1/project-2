@@ -44,7 +44,7 @@ def nextGen(): #Moves to the next generation, killing and reviving whichever cel
     for r in range(10): #a row of boxes!
         for c in range(10): #Columns of boxes!
             num = numNeighbors(r,c)
-            if num == 3:
+            if num == 3 or num == 2:
                 new[r][c]=1
             if num <= 1 or num >= 4:
                 new[r][c]=0
