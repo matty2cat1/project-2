@@ -15,9 +15,9 @@ def redrawAll(): #makes the board, sprites both dead and live ones
     for i in range(10): #a row of boxes!
         for j in range(10): #Columns of boxes!
             if data["board"][i][j]==0:
-                Sprite(deadSquare,((30)*i,(30)*j))
+                Sprite(deadSquare,((30)*i,(30)*j)) #spriting those boxes
             else:
-                Sprite(liveSquare,((30)*i,(30)*j))
+                Sprite(liveSquare,((30)*i,(30)*j)) #spriting more boxes
 
 def numNeighbors(r,c): #Determines how many neighbors a cell has
     live = 0
